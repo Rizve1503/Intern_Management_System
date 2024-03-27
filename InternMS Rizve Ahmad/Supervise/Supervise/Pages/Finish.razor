@@ -1,0 +1,135 @@
+﻿@page "/Finish/{CurretnID}"
+@using Supervise.Data
+@using System;
+@inject InternService ObjCustomService
+@inject NavigationManager NavigationManager
+<h2>Finished Internship</h2>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <div class="form-group">
+            <label>Intern ID :</label>
+            <label>@objCI.Internid</label>
+        </div>
+        <div class="form-group">
+            <label>Name :</label>
+            <label>@objCI.Name</label>
+        </div>
+        <div class="form-group">
+            <label>Email :</label>
+            <label>@objCI.Email</label>
+        </div>
+        <div class="form-group">
+            <label>Phone Number :</label>
+            <label>@objCI.Phone</label>
+        </div>
+        <div class="form-group">
+            <label>NID:</label>
+            <label>@objCI.NID</label>
+        </div>
+        <div class="form-group">
+            <label>Gender :</label>
+            <label>@objCI.Gender</label>
+        </div>
+        @*
+        <div class="form-group">
+        <label>Date of Birth :</label>
+        <label>@objCI.DOB</label>
+        </div>*@
+        <div class="form-group">
+            <label>Religion :</label>
+            <label>@objCI.Religion</label>
+        </div>
+        <div class="form-group">
+            <label>Marital Status:</label>
+            <label>@objCI.Marital_status</label>
+        </div>
+        @*
+        <div class="form-group">
+        <label>Present Division:</label>
+        <label>@objCI.Present_division</label>
+        </div>
+        <div class="form-group">
+        <label>Present District:</label>
+        <label>@objCI.Present_district</label>
+        </div>
+        <div class="form-group">
+        <label>Present Thanna:</label>
+        <label>@objCI.Present_thanna</label>
+        </div>*@
+        <div class="form-group">
+            <label>Present Address House:</label>
+            <label>@objCI.Present_address_house</label>
+        </div>
+        @*
+        <div class="form-group">
+        <label>Permanent Division:</label>
+        <label>@objCI.Permanent_division</label>
+        </div>
+        <div class="form-group">
+        <label>Permanent District:</label>
+        <label>@objCI.Permanent_district</label>
+        </div>
+        <div class="form-group">
+        <label>Permanent Thanna:</label>
+        <label>@objCI.Permanent_thanna</label>
+        </div>*@
+        <div class="form-group">
+            <label>Permanent Address House:</label>
+            <label>@objCI.Parmanent_address_house</label>
+        </div>
+
+        <div class="form-group">
+            <label>Father Name:</label>
+            <label>@objCI.Father_name</label>
+        </div>
+        <div class="form-group">
+            <label>Mother Name:</label>
+            <label>@objCI.Mother_name</label>
+        </div>
+        <div class="form-group">
+            <label>Facebook URL:</label>
+            <label>@objCI.Facebook_URL</label>
+        </div>
+        <div class="form-group">
+            <label>Linkedin URL:</label>
+            <label>@objCI.Linkedin_URL</label>
+        </div>
+        <div class="form-group">
+            <label>TBL Brunch:</label>
+            <label>@objCI.TBL_Brunch</label>
+        </div>
+        <div class="form-group">
+            <label>TBL Deperment:</label>
+            <label>@objCI.TBL_Department</label>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <input type="button" @onclick="@Finished" class="btn btn-primary" value="Finish" />
+            <input type="button" @onclick="@Cancel" class="btn btn-primary" value="Cancel" />
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string CurretnID { get; set; }
+    InternInfo objCI = new InternInfo();
+
+    protected override async Task OnInitializedAsync()
+    {
+        objCI = ObjCustomService.GetInternById(Convert.ToInt32(CurretnID));
+    }
+    protected void Finished()
+    {
+        ObjCustomService.Finish(objCI);
+        NavigationManager.NavigateTo("Interns");
+    }
+    void Cancel()
+    {
+        NavigationManager.NavigateTo("Interns");
+    }
+}

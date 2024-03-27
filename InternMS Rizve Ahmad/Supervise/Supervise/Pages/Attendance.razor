@@ -1,0 +1,74 @@
+﻿@page "/attendance"
+@using Supervise.Data
+@inject InternService internService
+
+<h3>Attendance Page</h3>
+
+<h5>Select an intern:</h5>
+<select @bind="@selectedInternId">
+    @foreach (var temp in obj)
+    {
+        <option value="@temp.Internid">@temp.Name</option>
+    }
+</select>
+
+<h5>Select attendance status:</h5>
+<select @bind="@selectedAttendanceStatus">
+    <option value=""></option>
+    <option value="Present">Present</option>
+    <option value="Absent">Absent</option>
+    <option value="Leave">Leave</option>
+</select>
+
+@if (selectedAttendanceStatus == "Present")
+{
+    <h5>Enter Time In:</h5>
+    <input type="time" @bind="@timeIn" />
+
+    <h5>Enter Time Out:</h5>
+    <input type="time" @bind="@timeOut" />
+}
+
+<button @onclick="AddAttendance">Submit</button>
+
+@code {
+    List<InternInfo> obj;
+      int selectedInternId;
+      string selectedAttendanceStatus;
+      DateTime? timeIn;
+      DateTime? timeOut;
+
+    protected override void OnInitialized()
+    {
+        // Load interns from database or any data source
+        obj = AllIntern();
+    }
+
+      List<InternInfo> AllIntern()
+    {
+        // ... code to load interns from data source ...
+        InternDataAccessLayer objInternDAL = new InternDataAccessLayer();
+        List<InternInfo> Intern = objInternDAL.ViewInternBySupervisor().ToList();
+        return Intern;
+    }
+
+      void AddAttendance()
+    {
+        var attendanceInfo = new AttendanceInfo
+            {
+                InternId = selectedInternId,
+                Date = DateTime.Today,
+                IsPresent = selectedAttendanceStatus,
+                TimeIn = timeIn,
+                TimeOut = timeOut
+            };
+
+        internService.AddAttendance(attendanceInfo);
+
+        // Clear form
+        selectedInternId = 0;
+        selectedAttendanceStatus = "";
+        timeIn = null;
+        timeOut = null;
+    }
+}

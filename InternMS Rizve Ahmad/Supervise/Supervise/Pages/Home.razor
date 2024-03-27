@@ -1,0 +1,81 @@
+﻿@page "/"
+
+@using Supervise.Data
+@inject InternService ObjCustomService
+<h2>Dashboard</h2>
+
+@if (objCtm == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+
+@foreach (var temp in objCtm){
+    
+<div class="row">
+    <div class="col-sm-3">
+        <div class="card dash">
+                    <a class="nav-link" href="Approved">
+                <div class="card-body">
+                    <i><h4 class="card-title">Approved Interns</h4></i>
+                    <i><p class="card-text">@temp.TotalInterns</p></i>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card dash">
+            <a class="nav-link" href="Finished">
+                <div class="card-body">
+                    <i><h4 class="card-title">Finished Interns</h4></i>
+                    <i><p class="card-text">@temp.FinishedInterns</p></i>
+                 </div>
+             </a>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card dash">
+                    <a class="nav-link" href="attendance">
+                <div class="card-body">
+                            <br>
+                    <i><h4 class="card-title">Attendance</h4></i>
+                            <br>
+                 </div>
+             </a>
+        </div>
+    </div>
+    
+    <div class="col-sm-3">
+        <div class="card dash">
+            <a class="nav-link" href="assigntask">
+                <div class="card-body">
+                            <br>
+                    <i><h4 class="card-title">Assign Task</h4></i>
+                            <br>
+                 </div>
+             </a>
+        </div>
+    </div>
+            <div class="col-sm-3">
+                <div class="card dash">
+                    <a class="nav-link" href="/">
+                        <div class="card-body">
+                            <br>
+                            <i><h4 class="card-title">Archive</h4></i>
+                            <br>
+                        </div>
+                    </a>
+                </div>
+            </div>
+</div>
+}
+}
+@code {
+    List<DashInfo> objCtm;
+    protected override async Task OnInitializedAsync()
+    {
+        InternService objCS = new InternService();
+        objCtm = await Task.Run(() => objCS.GetDashInfo());
+    }
+}

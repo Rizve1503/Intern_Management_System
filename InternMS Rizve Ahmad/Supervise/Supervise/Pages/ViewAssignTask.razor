@@ -1,0 +1,55 @@
+﻿@page "/viewassigntask/{CurretnID}"
+@using Supervise.Data
+@using System;
+@inject InternService internService
+@inject NavigationManager navigationManager
+
+<h3>Assigned Tasks</h3>
+
+<NavLink class="nav-link" href="assigntask">
+    <span class="oi oi-plus" aria-hidden="true"></span> Add New
+</NavLink>
+
+@if (assignTasks == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Task</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in assignTasks)
+            {
+                <tr>
+                    <td>@task.Date.ToShortDateString()</td>
+                    <td>@task.TaskDescription</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+@code {
+    [Parameter]
+    public string CurretnID { get; set; }
+    InternInfo objCI = new InternInfo();
+    //AssignTaskInfo assignTasks = new AssignTaskInfo();
+    List<AssignTaskInfo> assignTasks;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Retrieve the internId using ObjCustomService or any other method
+        objCI = await Task.Run(() => internService.GetInternById(Convert.ToInt32(CurretnID)));
+
+        InternService objCS = new InternService();
+        assignTasks = await Task.Run(() => objCS.GetTasksByInternId(objCI.Internid));
+       //assignTasks = await internService.GetTasksByInternId(objCI.Internid);
+    }
+}

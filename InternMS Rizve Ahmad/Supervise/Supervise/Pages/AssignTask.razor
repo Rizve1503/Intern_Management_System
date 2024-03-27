@@ -1,0 +1,61 @@
+﻿@page "/assigntask"
+@using Supervise.Data
+@inject InternService internService
+
+<h3>Assign Task Page</h3>
+
+<h5>Select an intern:</h5>
+<select @bind="@selectedInternId">
+    @foreach (var temp in obj)
+    {
+        <option value="@temp.Internid">@temp.Name</option>
+    }
+</select>
+
+<h5>Select a date:</h5>
+<input type="date" @bind="@selectedDate" />
+
+<h5>Enter task description:</h5>
+<textarea @bind="@taskDescription"></textarea>
+
+<button @onclick="AddTask">Assign Task</button>
+
+@code {
+    private List<InternInfo> obj;
+    private int selectedInternId;
+    private DateTime selectedDate;// = DateTime.Today; // Set default value to current date
+    private string taskDescription;
+
+    protected override void OnInitialized()
+    {
+        // Load interns from database or any data source
+        obj = AllIntern();
+        // Set default value to current date
+        selectedDate = DateTime.Today;
+    }
+
+    private List<InternInfo> AllIntern()
+    {
+        // ... code to load interns from data source ...
+        InternDataAccessLayer objInternDAL = new InternDataAccessLayer();
+        List<InternInfo> Intern = objInternDAL.ViewInternBySupervisor().ToList();
+        return Intern;
+    }
+
+    private void AddTask()
+    {
+        var taskInfo = new AssignTaskInfo
+            {
+                InternId = selectedInternId,
+                Date = selectedDate.Date,
+                TaskDescription = taskDescription
+            };
+
+        internService.AddTask(taskInfo);
+
+        // Clear form
+        selectedInternId = 0;
+        selectedDate = DateTime.Today;
+        taskDescription = string.Empty;
+    }
+}

@@ -1,0 +1,109 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Supervise
+build_property.RootNamespace = Supervise
+build_property.ProjectDir = D:\.NET for intern\Supervise\Supervise\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\.NET for intern\Supervise\Supervise
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/.NET for intern/Supervise/Supervise/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/AddTask.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkVGFzay5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/Approved.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwcm92ZWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/AssignTask.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXNzaWduVGFzay5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/Attendance.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXR0ZW5kYW5jZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/EditIntern.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdEludGVybi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/Finish.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmluaXNoLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/Finished.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmluaXNoZWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/InternDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJuRGV0YWlscy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/Interns.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJucy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/ViewAssignTask.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld0Fzc2lnblRhc2sucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/ViewAttendance.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld0F0dGVuZGFuY2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-cxs3wlwso5
+
+[D:/.NET for intern/Supervise/Supervise/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-h68ivipmin
+
+[D:/.NET for intern/Supervise/Supervise/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET for intern/Supervise/Supervise/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

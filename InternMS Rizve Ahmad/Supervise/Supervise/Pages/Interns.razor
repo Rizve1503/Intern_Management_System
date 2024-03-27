@@ -1,0 +1,79 @@
+﻿@page "/Interns"
+@using Supervise.Data
+@inject InternService ObjCustomService
+
+<h1>Intern Data</h1>
+@if (objCtmr == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Intern Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Varsity Name</th>
+                <th>View Tasks</th>
+                <th>Time Period</th>
+                <th>More</th>
+                <th>View Attendence</th>
+                <th>Action</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var temp in objCtmr)
+            {
+                <tr>
+                    <td>@temp.Internid</td>
+                    <td>@temp.Name</td>
+                    <td>@temp.Email</td>
+                    <td>@temp.Gender</td>
+                    <td>@temp.Varsity_name</td>
+                    <td>
+                        <a class="nav-link" href="/viewassigntask/@temp.Internid">
+                            <span class="oi oi-eye" aria-hidden="true" style="color: black"></span>
+                        </a>
+                    </td>
+                    <td>@temp.Duration</td>
+                    <td>
+                        <a class="nav-link" href="InternDetails/@temp.Internid">
+                            <span class="oi oi-eye" aria-hidden="true" style="color: black"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="nav-link" href="viewattendance/@temp.Internid">
+                            <span class="oi oi-eye" aria-hidden="true" style="color: black"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="nav-link" href="EditIntern/@temp.Internid">
+                            <span class="oi oi-pencil" aria-hidden="true" style="color: black"></span>
+                        </a>
+                        @if (@temp.Status == "Approved")
+                        {
+                            <a class="nav-link" href="Finish/@temp.Internid">
+                                <span class="oi oi-check" aria-hidden="true" style="color: red"></span>
+                            </a>
+                        }
+                    </td>
+                    <td>@temp.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    List<InternInfo> objCtmr;
+    protected override async Task OnInitializedAsync()
+    {
+        InternService objCS = new InternService();
+        objCtmr = await Task.Run(() => objCS.GetIntern());
+    }
+}
+
+

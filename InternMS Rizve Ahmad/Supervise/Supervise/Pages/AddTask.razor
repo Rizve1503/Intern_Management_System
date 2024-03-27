@@ -1,0 +1,61 @@
+﻿@page "/addtask/{CurretnID}"
+@using Supervise.Data
+@inject InternService internService
+
+<h3>Assign Task Page</h3>
+
+@*<h5>Select an intern:</h5>
+<select @bind="@selectedInternId">
+    @foreach (var temp in obj)
+    {
+        <option value="@temp.Internid">@temp.Name</option>
+    }
+</select>*@
+
+<h5>Select a date:</h5>
+<input type="date" @bind="@selectedDate" />
+
+<h5>Enter task description:</h5>
+<textarea @bind="@taskDescription"></textarea>
+
+<button @onclick="AddTasks">Assign Task</button>
+
+@code {
+    [Parameter] public int internId { get; set; }
+    //private List<InternInfo> obj;
+   // private int selectedInternId;
+    private DateTime selectedDate;// = DateTime.Today; // Set default value to current date
+    private string taskDescription;
+    AssignTaskInfo objCI = new AssignTaskInfo();
+    private List<AssignTaskInfo> assignedTasks;
+
+    protected override void OnInitialized()
+    {
+        assignedTasks = internService.GetAssignedTasks(internId);
+        // Set default value to current date
+        selectedDate = DateTime.Today;
+    }
+
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    objCI = await Task.Run(() => internService.GetTaskById(Convert.ToInt32(internId)));
+    //    // Set default value to current date
+    //    selectedDate = DateTime.Today;
+    //}
+
+    private void AddTasks()
+    {
+        var taskInfo = new AssignTaskInfo
+            {
+                InternId = objCI.InternId,
+                Date = selectedDate.Date,
+                TaskDescription = taskDescription
+            };
+
+        internService.AddTask(taskInfo);
+
+        // Clear form
+        selectedDate = DateTime.Today;
+        taskDescription = string.Empty;
+    }
+}

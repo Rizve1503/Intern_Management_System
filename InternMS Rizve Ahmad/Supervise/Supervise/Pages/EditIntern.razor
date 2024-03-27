@@ -1,0 +1,393 @@
+﻿@page "/EditIntern/{CurretnID}"
+@using Supervise.Data
+@using System;
+@inject InternService ObjCustomService
+@inject NavigationManager NavigationManager
+<h2>Edit Intern</h2>
+<hr />
+<form>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="Name" class="control-label">Name</label>
+                <input for="Name" class="form-control" @bind="@objCI.Name" placeholder="Full Name" />
+            </div>
+            <div class="form-group">
+                <label for="Password" class="control-label">Password</label>
+                <input for="Password" class="form-control" @bind="@objCI.Password" />
+            </div>
+            <div class="form-group">
+                <label for="Email" class="control-label">Email</label>
+                <input for="Email" class="form-control" @bind="@objCI.Email" placeholder="abc@xyz.com" />
+            </div>
+            <div class="form-group">
+                <label for="Phone" class="control-label">Phone Number</label>
+                <input for="Phone" class="form-control" @bind="@objCI.Phone" />
+            </div>
+            <div class="form-group">
+                <label for="NID" class="control-label">NID</label>
+                <input for="NID" class="form-control" @bind="@objCI.NID" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label">Gender</label>
+                <select @bind="@objCI.Gender" class="form-control">
+                    <option value="@objCI.Gender">@objCI.Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+@*
+            <div class="form-group">
+                <label asp-for="Birth_Day" class="control-label">Birth_Day</label>
+                <select @bind="@objCI.Birth_Day" class="form-control">
+                    <option value="@objCI.Birth_Day">@objCI.Birth_Day</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Birth_Mounth" class="control-label">Birth Mounth</label>
+                <select @bind="@objCI.Birth_Mounth" class="form-control">
+                    <option value="@objCI.Birth_Mounth">@objCI.Birth_Mounth</option>
+                    <option value="Jan">Jan</option>
+                    <option value="Feb">Feb</option>
+                    <option value="Mar">Mar</option>
+                    <option value="Apr">Apr</option>
+                    <option value="May">May</option>
+                    <option value="Jun">Jun</option>
+                    <option value="Jul">Jul</option>
+                    <option value="Aug">Aug</option>
+                    <option value="Sep">Sep</option>
+                    <option value="Oct">Oct</option>
+                    <option value="Nov">Nov</option>
+                    <option value="Dec">Dec</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Birth_Year" class="control-label">Birth_Year</label>
+                <input for="Birth_Year" class="form-control" @bind="@objCI.Birth_Year" />
+            </div>*@
+            <div class="form-group">
+                <label for="Varsity_name " class="control-label">Varsity_name </label>
+                <input for="Varsity_name " class="form-control" @bind="@objCI.Varsity_name" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Duration" class="control-label">Duration</label>
+                <select @bind="@objCI.Duration" class="form-control">
+                    <option value="@objCI.Duration">@objCI.Duration</option>
+                    <option value="1 Month">1 Month</option>
+                    <option value="2 Months">2 Months</option>
+                    <option value="3 Months">3 Months</option>
+                </select>
+            </div>
+            <div class="form-group">
+
+                <h5>Date of Birth:</h5>
+                <input type="date" @bind="@DOB" />
+                @*
+                <label for="DOB" class="control-label">Date of Birth</label>
+                <label>@objCI.DOB</label>
+
+                <InputDate id="DOB" class="form-control" @bind-Value="@objCI.DOB"  />*@
+            </div>
+            <div class="form-group">
+                <label for="Religion" class="control-label">Religion</label>
+                <input for="Religion" class="form-control" @bind="@objCI.Religion" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Marital_status" class="control-label">Marital status</label>
+                <select @bind="@objCI.Marital_status" class="form-control">
+                    <option value="@objCI.Marital_status">@objCI.Marital_status</option>
+                    <option value="Married">Married</option>
+                    <option value="Single">Single</option>
+                    <option value="widowed">widowed</option>
+                </select>
+            </div>
+            @*
+            @{
+            var divisions = new List<string> { "Barisal", "Chittagong", "Dhaka", "Khulna", "Mymensingh", "Rajshahi", "Rangpur", "Sylhet" };
+            var districts = new Dictionary<string, List<string>> {
+            { "Barisal", new List<string> { "Barguna", "Barisal", "Bhola", "Jhalokati", "Patuakhali", "Pirojpur" } },
+            { "Chittagong", new List<string> { "Bandarban", "Brahmanbaria", "Chandpur", "Chittagong", "Comilla", "Cox’s Bazar", "Feni", "Khagrachhari", "Lakshmipur", "Noakhali ", "Rangamati" } },
+            { "Dhaka", new List<string> { "Dhaka North", "Dhaka South", "Faridpur", "Gazipur", "Gopalganj", "Kishoreganj", "Madaripur", "Manikganj", "Munshiganj", "Narayanganj", "Narsingdi", "Rajbari", "Shariatpur", "Tangail" } },
+            { "Khulna", new List<string> { "Bagerhat", "Chuadanga", "Jessore", "Jhenaidah", "Khulna", "Kushtia", "Magura", "Meherpur", "Narail", "Satkhira" } },
+            { "Mymensingh", new List<string> { "Jamalpur", "Mymensingh", "Netrokona", "Sherpur" } },
+            { "Rajshahi", new List<string> { "Bogra", "Joypurhat", "Naogaon", "Natore", "Chapainawabganj", "Pabna", "Rajshahi", "Sirajganj" } },
+            { "Rangpur", new List<string> { "Dinajpur", "Gaibandha", "Kurigram", "Lalmonirhat", "Nilphamari", "Panchagarh", "Rangpur", "Thakurgaon" } },
+            { "Sylhet", new List<string> { "Habiganj", "Moulvibazar", "Sunamganj", "Sylhet" } }
+            };
+            var thanas = new Dictionary<string, List<string>> {
+            { "Barisal", new List<string> { "Agailjhara", "Babuganj", "Bakerganj", "Banaripara", "Gaurnadi", "Hizla", "Mehendiganj", "Muladi", "Wazirpur" } },
+            { "Barguna", new List<string> { "Amtali", "Bamna", "Barguna Sadar", "Betagi", "Patharghata", "Taltali" } },
+            { "Bhola", new List<string> { "Bhola Sadar",  "Burhanuddin",  "Daulatkhan",  "Lalmohan",  "Manpura", "Tazumuddin" } },
+            { "Jhalokati", new List<string> { "Jhalokati Sadar",  "Kanthalia",  "Nalchity", "Rajapur" } },
+            { "Patuakhali", new List<string> { "Bauphal",  "Dashmina",  "Dumki",  "Galachipa",  "Kalapara",  "Mirzaganj",  "Patuakhali Sadar", "Rangabali" } },
+            { "Pirojpur", new List<string> { "Bhandaria", "Kawkhali", "Mathbaria", "Nazirpur", "Pirojpur Sadar", "Nesarabad (Swarupkati)", "Zianagar" } },
+            { "Brahmanbaria", new List<string> { "Akhaura",  "Ashuganj",  "Bancharampur",  "Brahmanbaria Sadar",  "Kasba",  "Nabinagar",  "Nasirnagar", "Sarail" } },
+            { "Comilla", new List<string> { "Barura",  "Brahmanpara",  "Burichang",  "Chandina",  "Chauddagram",  "Daudkandi",  "Debidwar",  "Homna",  "Laksam",  "Meghna",  "Muradnagar",  "Nangalkot", "Titas" } },
+            { "Chandpur", new List<string> { "Chandpur Sadar",  "Faridganj",  "Haimchar",  "Haziganj",  "Kachua",  "Matlab Dakshin",  "Matlab Uttar", "Shahrasti" } },
+            { "Lakshmipur", new List<string> { "Kamalnagar",  "Lakshmipur Sadar",  "Raipur",  "Ramganj", "Ramgati" } },
+            { "Noakhali", new List<string> { "Begumganj",  "Chhatkhil",  "Companiganj",  "Hatiya",  "Kabirhat",  "Senbagh", "Sonaimuri" } },
+            { "Feni", new List<string> { "Chhagalnaiya",  "Daganbhuiyan",  "Feni Sadar",  "Fulgazi",  "Parshuram", "Sonagazi" } },
+            { "Chittagong", new List<string> { "Anwara",  "Banshkhali",  "Boalkhali",  "Chandanaish",  "Fatikchhari",  "Hathazari",  "Lohagara",  "Mirsharai",  "Patiya",  "Rangunia",  "Raozan",  "Sandwip",  "Satkania", "Sitakunda" } },
+            { "Cox’s Bazar", new List<string> { "Chakaria",  "Cox’s Bazar Sadar",  "Kutubdia",  "Maheshkhali",  "Pekua",  "Ramu",  "Teknaf", "Ukhia" } },
+            { "Khagrachhari", new List<string> { "Dighinala",  "Khagrachhari",  "Lakshmichhari",  "Mahalchhari",  "Manikchhari",  "Matiranga",  "Panchhari", "Ramgarh" } },
+            { "Rangamati", new List<string> { "Bagaichhari",  "Barkal",  "Belaichhari",  "Juraichhari",  "Kaptai",  "Langadu",  "Naniarchar", "Rajasthali" } },
+            { "Bandarban", new List<string> { "Alikadam", "Bandarban Sadar", "Naikhongchhari", "Rowangchhari", "Ruma", "Thanchi", "Lama" } },
+            { "Dhaka North", new List<string> { "Abdullahpur", "Agargaon", "Banani", "Bawnia", "Cantonment area", "Dakshinkhan", "Gulshan", "Hatirjheel Lake", "Kafrul", "Kazipara", "Khilkhet", "Mohakhali", "Pallabi", "Sher-e-Bangla Nagar", "Uttara" } },
+            { "Dhaka South", new List<string> { "Badda", "Dania", "Demra", "Hazaribagh", "Islampur", "Jatrabari", "Jurain", "Kamalapur", "Kamrangirchar", "Kotwali", "Lalbagh", "Matuail", "Motijheel", "Paltan", "Ramna", "Sadarghat", "Shahbagh", "Shyampur", "Sutrapur" } },
+            { "Faridpur", new List<string> { "Alfadanga", "Bhanga", "Boalmari", "Charbhadrasan", "Faridpur Sadar", "Madhukhali", "Nagarkanda", "Sadarpur", "Saltha" } },
+            { "Gopalganj", new List<string> { "Gazipur Sadar",  "Kapasia",  "Kaliakior",  "Kaliganj",  "Sripur", "Tongi town" } },
+            { "Kishoreganj", new List<string> { "Gopalganj Sadar", "Kashiani", "Kotalipara", "Muksudpur", "Tungipara" } },
+            { "Madaripur", new List<string> { "Kalkini", "Madaripur", "Rajoir", "Shibchar" } },
+            { "Manikganj", new List<string> { "Daulatpur",  "Ghior",  "Harirampur",  "Manikganj Sadar",  "Saturia",  "Shivalaya", "Singair" } },
+            { "Munshiganj", new List<string> { "Gazaria",  "Lauhajong",  "Munshiganj Sadar",  "Serajdikhan",  "Sreenagar", "Tongibari " } },
+            { "Narayanganj", new List<string> { "Araihazar",  "Bandar",  "Narayanganj Sadar",  "Rupganj",  "Siddhirganj",  "Sonargaon" } },
+            { "Narsingdi", new List<string> { "Belabo",  "Monohardi",  "Narsingdi Sadar",  "Palash",  "Raipura", "Shibpur" } },
+            { "Rajbari", new List<string> { "Baliakandi",  "Goalanda",  "Goalandaghat",  "Kalukhali", "Pangsha", "Rajbari Sadar" } },
+            { "Gazipur", new List<string> { "Gazipur Sadar",  "Kapasia",  "Tongi town",  "Sripur",  "Kaliganj", "Kaliakior" } },
+            { "Shariatpur", new List<string> { "Shariatpur Sadar",  "Bhedarganj",  "Damudya",  "Gosairhat",  "Naria",  "Shakhipur", "Zanjira" } },
+            { "Tangail", new List<string> { "Tangail Sadar", "Basail", "Bhuapur", "Delduar", "Dhonbari", "Ghatail", "Gopalpur", "Kalihati", "Madhupur", "Mirzapur", "Nagarpur", "Sakhipur" } },
+            { "Bagerhat", new List<string> { "Bagerhat Sadar", "Mongla", "Chitalmari", "Mollahat", "Sarankhola", "Rampal", "Fakirhat", "Morrelganj", "Kachua" } },
+            { "Chuadanga", new List<string> { "Chuadanga Sadar", "Alamdanga", "Damurhuda", "Jibonnagar" } },
+            { "Jessore", new List<string> { "Abhaynagar", "Bagherpara", "Chaugachha", "Jessore Sadar", "Jhikargachha", "Keshabpur", "Manirampur", "Sharsha" } },
+            { "Jhenaidah", new List<string> { "Jhenaidah Sadar", "Shailkupa", "Harinakunda", "Maheshpur", "Kotchandpur", "Kaliganj" } },
+            { "Khulna", new List<string> { "Koyra", "Dumuria", "Terokhada", "Dacope", "Dighalia", "Paikgachha", "Phultala", "Batiaghata", "Rupsa" } },
+            { "Kushtia", new List<string> { "Kushtia Sadar", "Mirpur", "Khoksa", "Bheramara", "Kumarkhali", "Daulatpur" } },
+            { "Magura", new List<string> { "Magura Sadar", "Shalikha", "Sreepur", "Mohammadpur" } },
+            { "Meherpur", new List<string> { "Meherpur Sadar", "Mujibnagar", "Gangni" } },
+            { "Narail", new List<string> { "Narail Sadar", "Kalia", "Lohagara" } },
+            { "Satkhira", new List<string> { "Satkhira Sadar", "Shyamnagar", "Assasuni", "Kaliganj", "Debhata", "Kalaroa", "Tala" } },
+            { "Jamalpur", new List<string> { "Dewanganj", "Baksiganj", "Islampur", "Jamalpur Sadar", "Madarganj", "Melandaha", "Sarishabari" } },
+            { "Mymensingh", new List<string> { "Bhaluka", "Trishal", "Haluaghat", "Muktagacha", "Dhobaura", "Fulbaria", "Gaffargaon", "Gauripur", "Ishwarganj", "Mymensingh Sadar", "Nandail", "Phulpur", "Tarakanda" } },
+            { "Netrokona", new List<string> { "ATPARA", "BARHATTA", "DURGAPUR", "KHALIAJURI", "KALMAKANDA", "KENDUA", "MADAN", "MOHANGANJ", "NETRAKONA SADAR", "PURBADHALA" } },
+            { "Sherpur", new List<string> {"JHENAIGATI", "NAKLA", "NALITABARI", "SHERPUR SADAR", "SREEBARDI" } },
+            { "Bogra", new List<string> { "ADAMDIGHI", "BOGRA SADAR", "SHERPUR", "DHUNAT", "DHUPCHANCHIA", "GABTALI", "KAHALOO", "NANDIGRAM", "SHAJAHANPUR", "SARIAKANDI", "SHIBGANJ", "SONATALA" } },
+            { "Joypurhat", new List<string> { "JOYPURHAT SADAR", "AKKELPUR", "KALAI", "KHETLAL", "PANCHBIBI" } },
+            { "Naogaon", new List<string> { "NAOGAON SADAR", "ATRAI", "DHAMOIRHAT", "BADALGACHHI", "RANINAGAR", "MANDA", "MOHADEVPUR", "PATNITALA", "PORSHA", "SAPAHAR", "NIAMATPUR" } },
+            { "Natore", new List<string> { "NATORE SADAR", "BAGATIPARA", "SINGRA", "BORAIGRAM", "GURUDASPUR", "LALPUR" } },
+            { "Chapainawabganj", new List<string> { "CHAPAINAWABGANJ SADAR", "GOMOSTAPUR", "NACHOL", "BHOLAHAT", "SHIBGANJ" } },
+            { "Pabna", new List<string> { "PABNA SADAR", "SANTHIA", "BERA", "SUJANAGAR", "ATGHARIA", "BHANGURA", "FARIDPUR", "CHATMOHAR", "ISHWARDI" } },
+            { "Rajshahi", new List<string> { "Bagha", "Bagmara", "Boalia", "Charghat", "Durgapur", "Godagari", "Mohanpur", "Paba",  "Puthia",  "Shah Makhdum", "Tanore" } },
+            { "Sirajganj", new List<string> { "SIRAJGANJ SADAR", "CHAUHALI", "KAMARKHANDA", "BELKUCHI", "KAZIPUR", "RAIGANJ", "ULLAHPARA", "TARASH", "SHAHJADPUR" } },
+            { "Dinajpur", new List<string> { "BIRAL", "BIRAMPUR", "BIRGANJ", "BOCHAGANJ", "CHIRIRBANDAR", "DINAJPUR SADAR", "GHORAGHAT", "HAKIMPUR", "KAHAROLE", "KHANSAMA", "NAWABGANJ ", "PARBATIPUR"} },
+            { "Gaibandha", new List<string> { "FULCHHARI", "GAIBANDHA SADAR", "GOBINDAGANJ", "PALASHBARI", "SADULLAPUR", "SUNDARGANJ", "SAGHATA" } },
+            { "Kurigram", new List<string> { "BHURUNGAMARI", "CHILMARI", "CHAR RAJIBPUR", "KURIGRAM SADAR", "NAGESHWARI", "PHULBARI", "RAJARHAT", "ROWMARI", "ULIPUR" } },
+            { "Lalmonirhat", new List<string> { "ADITMARI", "HATIBANDHA", "KALIGANJ", "LALMONIRHAT SADAR", "PATGRAM" } },
+            { "Nilphamari", new List<string> { "Dimla",  "Domar",  "Jaldhaka",  "Kishoreganj", "Nilphamari Sadar",  "Saidpur" } },
+            { "Panchagarh", new List<string> { "Atwari",  "Boda",  "Debiganj",  "Panchagarh Sadar",  "Tetulia" } },
+            { "Rangpur", new List<string> { "Badarganj",  "Gangachhara",  "Kaunia",  "Mithapukur",  "Pirganj",   "Pirgachha",  "Rangpur Sadar", "Taraganj" } },
+            { "Thakurgaon", new List<string> { "Baliadangi",  "Haripur",  "Pirganj",  "Ranisankail", "Thakurgaon Sadar" } },
+            { "Habiganj", new List<string> { "Ajmiriganj",  "Baniachang",  "Bahubal",  "Chunarughat",  "Habiganj Sadar", "Lakhai",  "Madhabpur", "Nabiganj" } },
+            { "Moulvibazar", new List<string> { "Barlekha",  "Juri",  "Kamalganj",  "Kulaura",  "Moulvibazar Sadar",  "Rajnagar", "Sreemangal" } },
+            { "Sunamganj", new List<string> { "Bishwamvarpur",  "Chhatak",  "Derai",  "Dharamapasha",  "Dowarabazar",  "Jagannathpur",  "Jamalganj",  "Shantiganj", "Sullah", "Sunamganj Sadar",  "Tahirpur" } },
+            { "Sylhet", new List<string> { "Balaganj", "Beanibazar", "Bishwanath", "Companiganj", "Fenchuganj", "Golapganj", "Gowainghat", "Jaintiapur", "Kanaighat", "Osmani Nagar", "Sylhet Sadar", "Zakiganj" } },
+            };
+
+            }
+
+            <h3>Present Address</h3>
+
+            <div class="form-group">
+            <label asp-for="Present_division">Present Division</label>
+            <select asp-for="Present_division" class="form-control">
+            <option value="@objCI.Present_division">@objCI.Present_division</option>
+            @foreach (var division in divisions)
+            {
+            <option value="@division">@division</option>
+            }
+            </select>
+            </div>
+
+            <div class="form-group">
+            <label asp-for="Present_district">Present District</label>
+            <select asp-for="Present_district" class="form-control">
+            <option value="@objCI.Present_district">@objCI.Present_district</option>
+            @if (!string.IsNullOrEmpty(objCI.Present_division))
+            {
+            foreach (var district in districts[objCI.Present_division])
+            {
+            <option value="@district">@district</option>
+            }
+            }
+            </select>
+            </div>
+
+            <div class="form-group">
+            <label asp-for="Present_thanna">Present Thana</label>
+            <select asp-for="Present_thanna" class="form-control">
+            <option value="@objCI.Present_thanna">@objCI.Present_thanna</option>
+            @if (!string.IsNullOrEmpty(objCI.Present_district))
+            {
+            foreach (var thana in thanas[objCI.Present_district])
+            {
+            <option value="@thana">@thana</option>
+            }
+            }
+            </select>
+            </div>
+            *@
+            <div class="form-group">
+                <label for="Present_address_house" class="control-label">Present Address</label>
+                <input for="Present_address_house" class="form-control" @bind="@objCI.Present_address_house" placeholder="House no./Street/Area" />
+            </div>
+            @*
+            <h3>Permanent Address</h3>
+
+            <div class="form-group">
+            <label asp-for="Permanent_division">Permanent Division</label>
+            <select asp-for="Permanent_division" class="form-control">
+            <option value="@objCI.Permanent_division">@objCI.Permanent_division</option>
+            @foreach (var division in divisions)
+            {
+            <option value="@division">@division</option>
+            }
+            </select>
+            </div>
+
+            <div class="form-group">
+            <label asp-for="Permanent_district">Permanent District</label>
+            <select asp-for="Permanent_district" class="form-control">
+            <option value="@objCI.Permanent_district">@objCI.Permanent_district</option>
+            @if (!string.IsNullOrEmpty(objCI.Permanent_division))
+            {
+            foreach (var district in districts[objCI.Permanent_division])
+            {
+            <option value="@district">@district</option>
+            }
+            }
+            </select>
+            </div>
+
+            <div class="form-group">
+            <label asp-for="Permanent_thanna">Permanent Thana</label>
+            <select asp-for="Permanent_thanna" class="form-control">
+            <option value="@objCI.Permanent_thanna">@objCI.Permanent_thanna</option>
+            @if (!string.IsNullOrEmpty(objCI.Permanent_district))
+            {
+            foreach (var thana in thanas[objCI.Permanent_district])
+            {
+            <option value="@thana">@thana</option>
+            }
+            }
+            </select>
+            </div>
+            *@
+            <div class="form-group">
+                <label for="Parmanent_address_house" class="control-label">Permanent Address</label>
+                <input for="Parmanent_address_house" class="form-control" @bind="@objCI.Parmanent_address_house" placeholder="House no./Street/Area" />
+            </div>
+
+            <div class="form-group">
+                <label for="Father_name" class="control-label">Father Name</label>
+                <input for="Father_name" class="form-control" @bind="@objCI.Father_name" />
+            </div>
+            <div class="form-group">
+                <label for="Mother_name" class="control-label">Mother Name</label>
+                <input for="Mother_name" class="form-control" @bind="@objCI.Mother_name" />
+            </div>
+            <div class="form-group">
+                <label for="Facebook_URL" class="control-label">Facebook URL</label>
+                <input for="Facebook_URL" class="form-control" @bind="@objCI.Facebook_URL" />
+            </div>
+            <div class="form-group">
+                <label for="Linkedin_URL" class="control-label">Linkedin URL</label>
+                <input for="Linkedin_URL" class="form-control" @bind="@objCI.Linkedin_URL" />
+            </div>
+            @{
+                var brunch = new List<string> { "Head Office", "Principal Branch", "SKB Branch", "Bogura Cantt. Branch", "Cumilla Cantt. Branch", "Chattogram Cantt. Branch", "Rangpur Cantt. Branch", "Jashore Cantt. Branch" };
+            }
+
+            <div class="form-group">
+                <label asp-for="TBL_Brunch">TBL Brunch: </label>
+                <select asp-for="TBL_Brunch" class="form-control">
+                    <option value="">-- Select brunch --</option>
+                    @foreach (var TBL_Brunch in brunch)
+                    {
+                        <option value="@TBL_Brunch">@TBL_Brunch</option>
+                    }
+                </select>
+            </div>
+            @{
+                var department = new List<string> { "Finance ", "Human resources", "Operations management", "IT" };
+            }
+
+            <div class="form-group">
+                <label asp-for="TBL_Department">TBL Department: </label>
+                <select asp-for="TBL_Department" class="form-control">
+                    <option value="">-- Select department --</option>
+                    @foreach (var TBL_Department in department)
+                    {
+                        <option value="@TBL_Department">@TBL_Department</option>
+                    }
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="button" @onclick="@UpdateIntern" class="btn btn-primary" value="Save" />
+                <input type="button" @onclick="@Cancel" class="btn btn-primary" value="Cancel" />
+            </div>
+        </div>
+    </div>
+</form>
+@code {
+    [Parameter]
+    public string CurretnID { get; set; }
+    InternInfo objCI = new InternInfo();
+
+    private DateTime DOB;
+    
+
+    protected override async Task OnInitializedAsync()
+    {
+        objCI = await Task.Run(() => ObjCustomService.GetInternById(Convert.ToInt32(CurretnID)));
+        DOB = objCI.DOB;
+    }
+    protected void UpdateIntern()
+    {
+        ObjCustomService.UpdateIntern(objCI);
+        NavigationManager.NavigateTo("Interns");
+    }
+    void Cancel()
+    {
+        NavigationManager.NavigateTo("Interns");
+    }
+}
+
